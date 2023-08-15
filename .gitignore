@@ -1,0 +1,6 @@
+.venv
+develop/
+static/
+.env
+db.sqlite3
+__pycache__

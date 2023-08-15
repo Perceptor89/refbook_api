@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pkzdrav-trial"
+version = "0.1.0"
+description = ""
+authors = ["Andrei Fominykh <andreyfominykh@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pkzdrav_trial"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.4"
+djangorestframework = "^3.14.0"
+whitenoise = "^6.5.0"
+psycopg2-binary = "^2.9.7"
+gunicorn = "^21.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
