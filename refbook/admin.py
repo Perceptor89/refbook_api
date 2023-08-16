@@ -43,7 +43,8 @@ class ElementInline(admin.StackedInline):
 
 @admin.register(RefbookVersion)
 class RefbookVersionAdmin(admin.ModelAdmin):
-    list_display = ['version', 'active_from', 'refbook_code', 'refbook_name']
+    ordering = ['id']
+    list_display = ['id', 'version', 'active_from', 'refbook_code', 'refbook_name']
     list_display_links = ['version']
     inlines = [
         ElementInline,
@@ -60,4 +61,5 @@ class RefbookVersionAdmin(admin.ModelAdmin):
 
 @admin.register(RefbookElement)
 class RefbookElementAdmin(admin.ModelAdmin):
-    list_display = ['refbook_version', 'code', 'name']
+    ordering = ['id']
+    list_display = ['id', 'refbook_version', 'code', 'value']

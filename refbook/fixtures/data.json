@@ -1,0 +1,146 @@
+[
+{
+    "model": "refbook.refbookversion",
+    "pk": 1,
+    "fields": {
+        "refbook": 1,
+        "version": "90",
+        "active_from": "2023-08-01"
+    }
+},
+{
+    "model": "refbook.refbookversion",
+    "pk": 2,
+    "fields": {
+        "refbook": 1,
+        "version": "100",
+        "active_from": "2023-08-14"
+    }
+},
+{
+    "model": "refbook.refbookversion",
+    "pk": 3,
+    "fields": {
+        "refbook": 1,
+        "version": "110",
+        "active_from": "2023-08-15"
+    }
+},
+{
+    "model": "refbook.refbookversion",
+    "pk": 4,
+    "fields": {
+        "refbook": 1,
+        "version": "120",
+        "active_from": "2023-08-31"
+    }
+},
+{
+    "model": "refbook.refbookversion",
+    "pk": 5,
+    "fields": {
+        "refbook": 2,
+        "version": "100",
+        "active_from": "2023-08-24"
+    }
+},
+{
+    "model": "refbook.refbook",
+    "pk": 1,
+    "fields": {
+        "code": "Ф123",
+        "name": "Первый справочник",
+        "description": ""
+    }
+},
+{
+    "model": "refbook.refbook",
+    "pk": 2,
+    "fields": {
+        "code": "Е321",
+        "name": "Второй справочник",
+        "description": ""
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 1,
+    "fields": {
+        "refbook_version": 3,
+        "code": "k35",
+        "value": "первый элемент"
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 2,
+    "fields": {
+        "refbook_version": 3,
+        "code": "G58",
+        "value": "второй элемент"
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 3,
+    "fields": {
+        "refbook_version": 3,
+        "code": "O67",
+        "value": "третий элемент"
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 4,
+    "fields": {
+        "refbook_version": 2,
+        "code": "111",
+        "value": "первый"
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 5,
+    "fields": {
+        "refbook_version": 2,
+        "code": "222",
+        "value": "второй"
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 6,
+    "fields": {
+        "refbook_version": 1,
+        "code": "333",
+        "value": "третий"
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 7,
+    "fields": {
+        "refbook_version": 1,
+        "code": "ГГГ",
+        "value": "четвертый 444"
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 8,
+    "fields": {
+        "refbook_version": 5,
+        "code": "25ЕР",
+        "value": "пятый"
+    }
+},
+{
+    "model": "refbook.refbookelement",
+    "pk": 9,
+    "fields": {
+        "refbook_version": 5,
+        "code": "99ЛФ",
+        "value": "шестой"
+    }
+}
+]

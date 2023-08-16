@@ -7,7 +7,7 @@ class RefbookVersion(models.Model):
         'Refbook', on_delete=models.CASCADE, related_name='versions',
         verbose_name='Справочник')
     version = models.CharField(max_length=50, verbose_name='Версия')
-    active_from = models.DateField(unique=True, verbose_name='Действует с')
+    active_from = models.DateField(verbose_name='Действует с')
 
     def __str__(self) -> str:
         return '{}-{}'.format(self.refbook,
@@ -21,6 +21,10 @@ class RefbookVersion(models.Model):
                 fields=['refbook', 'version'],
                 name='unique_refbook_version',
             ),
+            models.UniqueConstraint(
+                fields=['refbook', 'active_from'],
+                name='unique_refbook_active_from',
+            )
         ]
 
 
@@ -51,8 +55,8 @@ class RefbookElement(models.Model):
         verbose_name='Версия справочника',
     )
     code = models.CharField(max_length=100, verbose_name='Код')
-    name = models.CharField(max_length=300, verbose_name='Название')
-    
+    value = models.CharField(max_length=300, verbose_name='Название')
+
     class Meta:
         verbose_name = 'Элемент'
         verbose_name_plural = 'Элементы'
@@ -65,7 +69,3 @@ class RefbookElement(models.Model):
 
     def __str__(self) -> str:
         return self.code
-
-    # def version_label(self):
-    #     return '{} | {}'.format(self.refbook_version.refbook.code,
-    #                             self.refbook_version.version)
