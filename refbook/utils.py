@@ -5,7 +5,7 @@ from django.utils import timezone
 from refbook.models import RefbookElement
 
 
-def convert_date(date_str: str) -> date | None :
+def convert_date(date_str: str) -> date | None:
     '''Check if date has YYYY-MM-DD format.'''
     try:
         return date.fromisoformat(date_str)
@@ -13,7 +13,7 @@ def convert_date(date_str: str) -> date | None :
         return None
 
 
-def filter_elements(refbook_id: int, version: str=None) -> QuerySet:
+def filter_elements(refbook_id: int, version: str = None) -> QuerySet:
     '''Filter elements with pointed or current version.'''
 
     queryset = RefbookElement.objects.prefetch_related('refbook_version')\

@@ -1,6 +1,5 @@
 __pycache__
 develop
-static
 .env
 .venv
 .dockerignore
@@ -11,3 +10,4 @@ README.md
 .gitignore
 pyproject.toml
 poetry.lock
+staticfiles

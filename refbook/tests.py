@@ -36,7 +36,7 @@ class TestRefbookListView(TestCase):
         ).json()
         names = [r['name'] for r in response['refbooks']]
         self.assertEqual([], names)
-    
+
     def test_refbook_date_not_valid(self):
         response = self.client.get(
             reverse('refbook-list'), data={'date': '2023-0701'}
@@ -51,9 +51,9 @@ class TestConstraints(TestCase):
         refbook = Refbook.objects.get(id=1)
         self.assertEqual(refbook.code, 'Ф123')
         self.assertRaises(
-            IntegrityError, 
+            IntegrityError,
             Refbook.objects.create,
-            code='Ф123', 
+            code='Ф123',
             name='Первый справочник',
         )
 
@@ -108,11 +108,11 @@ class TestRefbookElementListView(TestCase):
                          '2023-08-15')
         self.assertEqual(cur_ver.version, '110')
         self.assertEqual(len(cur_ver.elements.all()), 3)
-        
+
         elements = RefbookElement.objects\
             .filter(refbook_version__refbook=1)
         self.assertEqual(len(elements), 7)
-        
+
         response = self.client.get(
             reverse('refbook-element-list', kwargs={'pk': 1}),
         ).json()

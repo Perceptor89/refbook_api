@@ -17,10 +17,11 @@ class RefbookListView(generics.ListAPIView):
             queryset = queryset\
                 .filter(versions__active_from__lte=date)\
                 .distinct()
-        
+
         return queryset
 
     def get(self, request, *args, **kwargs):
+        '''Shows refbook list.'''
         date = self.request.query_params.get('date')
         if date:
             date = utils.convert_date(date)
@@ -63,7 +64,9 @@ class RefbookElementCheckView(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         version = self.request.query_params.get('version')
-        element = RefbookElementSerializer(data=self.request.query_params.dict())
+        element = RefbookElementSerializer(
+            data=self.request.query_params.dict()
+        )
         if not element.is_valid():
             return Response(element.errors, status=status.HTTP_400_BAD_REQUEST)
         else:

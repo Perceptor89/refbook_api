@@ -5,7 +5,7 @@ from refbook.models import Refbook, RefbookElement
 class RefbookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Refbook
-        fields = '__all__'
+        exclude = ['description']
 
 
 class RefbookElementSerializer(serializers.ModelSerializer):

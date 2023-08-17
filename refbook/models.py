@@ -37,7 +37,7 @@ class Refbook(models.Model):
         return self.code
 
     class Meta:
-        ordering = ('id',)
+        ordering = ['id']
         verbose_name = 'Справочник'
         verbose_name_plural = 'Справочники'
 
@@ -58,6 +58,7 @@ class RefbookElement(models.Model):
     value = models.CharField(max_length=300, verbose_name='Название')
 
     class Meta:
+        ordering = ['id']
         verbose_name = 'Элемент'
         verbose_name_plural = 'Элементы'
         constraints = [

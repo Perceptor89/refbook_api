@@ -1,0 +1,189 @@
+openapi: 3.0.2
+servers:
+  - url: http://localhost:8000/
+    description: local machine
+  - url: http://185.250.205.16:8000/
+    description: example
+info:
+  title: 'Refbook API'
+  version: '0.1.0'
+paths:
+  /refbooks/:
+    get:
+      summary: list refbooks
+      operationId: listRefbooks
+      description: List refbooks according to specified date.
+      parameters:
+      - name: date
+        required: false
+        in: query
+        description: YYYY-MM-DD format date to filter refbooks by versions start date less or equal.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                  refbooks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Refbook'
+          description: 'Returns list of actual refbooks.'
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Date has not valid format YYYY-MM-DD.
+          description: 'Returns if date query param specified, but has not valid format.'
+  /refbooks/{id}/elements/:
+    get:
+      summary: list refbook elements
+      operationId: listRefbookElements
+      description: 'List all refbook elements all by specified version.'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: 'Refbook id which elements to show.'
+        schema:
+          type: string
+      - name: version
+        required: false
+        in: query
+        description: Filter with specified version.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                  elements:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RefbookElement'
+          description: 'Returns elements of specified or current version if exist.'
+        '404':
+          description: Returns if no specified refbook id.
+  /refbooks/{id}/check_element/:
+    get:
+      summary: check the element
+      operationId: listRefbookElementChecks
+      description: 'Check if element in specified or current version.'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: 'Refbook id which elements to check.'
+        schema:
+          type: string
+      - name: code
+        in: query
+        required: true
+        description: 'Code of the element.'
+        schema:
+          type: string
+      - name: value
+        in: query
+        required: true
+        description: 'Value of the element.'
+        schema:
+          type: string
+      - name: version
+        required: false
+        in: query
+        description: Filter with specified version.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Returns status 200 if element does exist.'
+        '404':
+          description: 'Returns status 404 if element does not exist.'
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: array
+                    items: 
+                      type: string
+                  value:
+                    type: array
+                    items: 
+                      type: string
+          description: 'Returns errors if query params not valid.'
+components:
+  schemas:
+    Refbook:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        code:
+          type: string
+          maxLength: 100
+        name:
+          type: string
+          maxLength: 300
+      required:
+      - code
+      - name
+    RefbookElement:
+      type: object
+      properties:
+        code:
+          type: string
+          maxLength: 100
+        value:
+          type: string
+          maxLength: 300
+      required:
+      - code
+      - value
