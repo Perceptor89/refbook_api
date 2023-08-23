@@ -70,7 +70,7 @@ paths:
         required: true
         description: 'Refbook id which elements to show.'
         schema:
-          type: string
+          type: integer
       - name: version
         required: false
         in: query
@@ -119,7 +119,7 @@ paths:
         required: true
         description: 'Refbook id which elements to check.'
         schema:
-          type: string
+          type: integer
       - name: code
         in: query
         required: true

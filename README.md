@@ -19,6 +19,12 @@ You can run app by docker-compose:
 docker-compose up -d --build
 ```
 
+Load test data from fixture:
+
+```bash
+docker exec pkzdrav_backend ./manage.py loaddata /app/refbook/fixtures/data.json
+```
+
 By default it starts at http://127.0.0.1:8000/
 
 ## Endpoints
